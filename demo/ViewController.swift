@@ -7,12 +7,21 @@
 //
 
 import UIKit
-
+struct Person {
+    var name: String
+}
+extension Person: Equatable {
+    static func ==(lhs: Person, rhs: Person) -> Bool {
+        return lhs.name == rhs.name
+    }
+}
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        let _ = Person(name: "Lisa") == Person(name: "Lisa") // → true
+        let _ = Person(name: "Lisa") == Person(name: "Bart") // → false
     }
 
     override func didReceiveMemoryWarning() {
